@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: tenant-service-api
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+      - AUTH_SERVICE_URL=${AUTH_SERVICE_URL}
+    depends_on:
+      - db-tenants
+    networks:
+      - tenant_net
+
+  db-tenants:
+    image: postgres:15
+    container_name: ${DB_CONTAINER_NAME}
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - pgdata_tenants:/var/lib/postgresql/data
+    networks:
+      - tenant_net
+
+volumes:
+  pgdata_tenants:
+
+networks:
+  tenant_net:
+    name: tenant_service_network

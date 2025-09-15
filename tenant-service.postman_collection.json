@@ -1,0 +1,324 @@
+{
+  "info": {
+    "name": "Sabor Carioca - Tenant Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Tenants",
+      "item": [
+        {
+          "name": "Create Tenant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"My New Tenant\",\n    \"configuration\": {}\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3005/tenants",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "tenants"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Tenants",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3005/tenants",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "tenants"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Tenant By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3005/tenants/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "tenants",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid_here"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Tenant",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Tenant Name\"}"
+            },
+            "url": {
+              "raw": "http://localhost:3005/tenants/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "tenants",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid_here"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Tenant",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:3005/tenants/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "tenants",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "uuid_here"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Stores",
+      "item": [
+        {
+          "name": "Create Store",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"My New Store\",\n    \"codeStore\": \"unique-store-code\"}"
+            },
+            "url": {
+              "raw": "http://localhost:3005/tenants/:tenantId/stores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "tenants",
+                ":tenantId",
+                "stores"
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": "tenant_uuid_here"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Stores by Tenant (Paginated)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3005/tenants/:tenantId/stores?page=1&limit=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "tenants",
+                ":tenantId",
+                "stores"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": "tenant_uuid_here"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Store By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3005/tenants/:tenantId/stores/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "tenants",
+                ":tenantId",
+                "stores",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": "tenant_uuid_here"
+                },
+                {
+                  "key": "id",
+                  "value": "store_uuid_here"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Store",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Store Name\"}"
+            },
+            "url": {
+              "raw": "http://localhost:3005/tenants/:tenantId/stores/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "tenants",
+                ":tenantId",
+                "stores",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": "tenant_uuid_here"
+                },
+                {
+                  "key": "id",
+                  "value": "store_uuid_here"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Store",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:3005/tenants/:tenantId/stores/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "tenants",
+                ":tenantId",
+                "stores",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": "tenant_uuid_here"
+                },
+                {
+                  "key": "id",
+                  "value": "store_uuid_here"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
