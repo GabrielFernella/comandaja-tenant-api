@@ -1,9 +1,11 @@
 import 'reflect-metadata'
-import './shared/container'
-import express from 'express'
-import cors from 'cors'
 import dotenv from 'dotenv'
+import './shared/container'
+
+import cors from 'cors'
+import express from 'express'
 import routes from './routes'
+
 import errorHandler from './middlewares/errorHandler'
 
 dotenv.config()

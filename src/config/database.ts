@@ -17,3 +17,10 @@ export const AppDataSource = new DataSource({
     join(__dirname, '..', 'shared', 'typeorm', 'migrations', '*.{ts,js}'),
   ],
 })
+
+export async function initializeDataSource() {
+  if (!AppDataSource.isInitialized) {
+    await AppDataSource.initialize()
+  }
+  return AppDataSource
+}

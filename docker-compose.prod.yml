@@ -1,11 +1,29 @@
-version: "3.8"
 
 services:
-  app:
+  tenant-api:
+    env_file:
+      - .env.prod
     command: npm start
     restart: always
     ports:
       - "${PORT}:${PORT}"
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - "node.role == worker"
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
 
   db-tenants:
     restart: always

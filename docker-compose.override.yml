@@ -1,14 +1,11 @@
-version: "3.8"
 
 services:
-  app:
+  tenant-api:
+    container_name: tenant-api
     command: npm run dev
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
     ports:
-      - "${PORT}:${PORT}"
+      - "3005:3005"
 
   db-tenants:
-    ports:
-      - "${DB_EXTERNAL_PORT}:5432"
