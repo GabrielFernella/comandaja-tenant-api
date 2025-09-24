@@ -47,12 +47,10 @@ services:
   db-tenants:
     image: postgres:15
     container_name: tenant-db
+    ports:
+      - "5451:5432"
     env_file:
       - .env.dev
-    # environment:
-    #   - POSTGRES_USER=postgres
-    #   - POSTGRES_PASSWORD=postgres
-    #   - POSTGRES_DB=tenants_db_dev
     volumes:
       - pgdata_tenant:/var/lib/postgresql/data
     networks:
